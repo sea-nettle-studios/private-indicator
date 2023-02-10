@@ -8,8 +8,10 @@ browser.runtime.onInstalled.addListener(async () => {
     for (const windowInfo of windows) {
         if (windowInfo.incognito) {
             await browser.browserAction.setIcon({path: INCOGNITO_ICON_ON, windowId: windowInfo.id});
+            await browser.browserAction.setTitle({title: 'private', windowId: windowInfo.id});
         } else {
             await browser.browserAction.setIcon({path: INCOGNITO_ICON_OFF, windowId: windowInfo.id});
+            await browser.browserAction.setTitle({title: 'not private', windowId: windowInfo.id});
         }
     }
 });
@@ -17,7 +19,9 @@ browser.runtime.onInstalled.addListener(async () => {
 browser.windows.onCreated.addListener(async (windowInfo) => {
     if (windowInfo.incognito) {
         await browser.browserAction.setIcon({path: INCOGNITO_ICON_ON, windowId: windowInfo.id});
+        await browser.browserAction.setTitle({title: 'private', windowId: windowInfo.id});
     } else {
         await browser.browserAction.setIcon({path: INCOGNITO_ICON_OFF, windowId: windowInfo.id});
+        await browser.browserAction.setTitle({title: 'not private', windowId: windowInfo.id});
     }
 });
