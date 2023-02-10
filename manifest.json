@@ -4,13 +4,9 @@
     "description": "Indicate if the current tab is in incognito mode.",
     "author": "schilkyl",
     "version": "1.0.0",
-    "permissions": [
-        "tabs"
-    ],
+    "permissions": ["tabs"],
     "background": {
-        "scripts": [
-            "background.js"
-        ]
+        "scripts": ["background.js"]
     },
     "icons": {
         "16": "images/incognito_on.svg"
