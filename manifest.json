@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Private Indicator",
     "description": "Visually indicate if a browser window is in private mode or not.",
-    "author": "schilkyl",
+    "author": "sea nettle studios",
     "version": "2.0.0",
     "permissions": ["storage"],
     "browser_specific_settings": {
