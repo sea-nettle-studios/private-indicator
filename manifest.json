@@ -1,26 +1,26 @@
 {
-    "manifest_version": 2,
-    "name": "Private Indicator",
-    "description": "Visually indicate if a browser window is in private mode or not.",
     "author": "sea nettle studios",
-    "version": "2.0.0",
-    "permissions": ["storage"],
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "browser_action": {
+        "default_icon": "images/icon.svg"
+    },
     "browser_specific_settings": {
         "gecko": {
             "id": "private-indicator@seanettlestudios"
         }
     },
-    "background": {
-        "scripts": ["background.js"]
-    },
+    "description": "Visually indicate if a browser window is in private mode or not.",
     "icons": {
         "48": "images/icon.svg",
         "96": "images/icon.svg"
     },
-    "browser_action": {
-        "default_icon": "images/icon.svg"
-    },
+    "manifest_version": 2,
+    "name": "Private Indicator",
     "options_ui": {
         "page": "options.html"
-    }
+    },
+    "permissions": ["storage"],
+    "version": "2.0.0"
 }
