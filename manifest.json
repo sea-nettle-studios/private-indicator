@@ -3,8 +3,12 @@
     "name": "Incognito Indicator",
     "description": "Indicate if the current tab is in incognito mode.",
     "author": "schilkyl",
-    "version": "1.0.0",
-    "permissions": ["tabs"],
+    "permissions": ["storage"],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "incognito-indicator@seanettlestudios"
+        }
+    },
     "background": {
         "scripts": ["background.js"]
     },
@@ -13,5 +17,8 @@
     },
     "browser_action": {
         "default_icon": "images/incognito_default.svg"
+    },
+    "options_ui": {
+        "page": "options.html"
     }
 }

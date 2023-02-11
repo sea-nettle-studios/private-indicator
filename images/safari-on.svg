@@ -1,0 +1,6 @@
+<svg enable-background="new 0 0 128 128" version="1.1" viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <rect clip-rule="evenodd" fill="none" fill-rule="evenodd" height="128" width="128"/>
+    <circle clip-rule="evenodd" cx="64" cy="64" fill="#00AAFF" fill-rule="evenodd" r="64"/>
+    <polygon clip-rule="evenodd" fill="#FFFFFF" fill-rule="evenodd" points="23.742,104.258 69.845,69.845 58.155,58.155"/>
+    <polygon clip-rule="evenodd" fill="#EE0000" fill-rule="evenodd" points="104.258,23.742 58.155,58.155 64,64 64,64 69.845,69.845"/>
+</svg>
