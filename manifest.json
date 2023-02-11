@@ -3,6 +3,7 @@
     "name": "Incognito Indicator",
     "description": "Indicate if the current tab is in incognito mode.",
     "author": "schilkyl",
+    "version": "2.0.0",
     "permissions": ["storage"],
     "browser_specific_settings": {
         "gecko": {
