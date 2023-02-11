@@ -1,23 +1,24 @@
 {
     "manifest_version": 2,
-    "name": "Incognito Indicator",
-    "description": "Indicate if the current tab is in incognito mode.",
+    "name": "Private Indicator",
+    "description": "Visually indicate if a browser window is in private mode or not.",
     "author": "schilkyl",
     "version": "2.0.0",
     "permissions": ["storage"],
     "browser_specific_settings": {
         "gecko": {
-            "id": "incognito-indicator@seanettlestudios"
+            "id": "private-indicator@seanettlestudios"
         }
     },
     "background": {
         "scripts": ["background.js"]
     },
     "icons": {
-        "16": "images/incognito_on.svg"
+        "48": "images/icon.svg",
+        "96": "images/icon.svg"
     },
     "browser_action": {
-        "default_icon": "images/incognito_default.svg"
+        "default_icon": "images/icon.svg"
     },
     "options_ui": {
         "page": "options.html"

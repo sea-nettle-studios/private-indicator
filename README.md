@@ -1,1 +1,1 @@
-# incognito-indicator
+# private-indicator
