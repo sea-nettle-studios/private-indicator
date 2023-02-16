@@ -8,7 +8,7 @@
     },
     "browser_specific_settings": {
         "gecko": {
-            "id": "private-indicator@seanettlestudios"
+            "id": "{eb4f1d4a-4e59-4ff6-b564-7c61e8a34fef}"
         }
     },
     "description": "Visually indicate if a browser window is in private mode or not.",
