@@ -1,37 +1,42 @@
-const INCOGNITO_ICON_DEFAULT = 'images/incognito_default.svg'
-const INCOGNITO_ICON_ON = 'images/incognito_on.svg'
-const INCOGNITO_ICON_OFF = 'images/incognito_off.svg'
+const STORAGE_KEY_ICON_THEME = 'store/icon-theme';
+const DEFAULT_ICON_THEME = 'firefox';
 
-function updateBrowserActionIcon(enabled) {
-    let path;
-
-    if (enabled === undefined) {
-        path = INCOGNITO_ICON_DEFAULT;
-    } else {
-        path = enabled ? INCOGNITO_ICON_ON : INCOGNITO_ICON_OFF
+browser.runtime.onInstalled.addListener(async () => {
+    const storage = await browser.storage.sync.get(STORAGE_KEY_ICON_THEME);
+    if (!storage[STORAGE_KEY_ICON_THEME]) {
+        await browser.storage.sync.set({[STORAGE_KEY_ICON_THEME]: DEFAULT_ICON_THEME});
     }
+});
 
-    browser.browserAction.setIcon({
-        path
-    })
-}
+browser.runtime.onInstalled.addListener(async () => {
+    const storage = await browser.storage.sync.get(STORAGE_KEY_ICON_THEME);
+    const iconTheme = storage[STORAGE_KEY_ICON_THEME];
 
-browser.tabs.onActivated.addListener(active_info => {
-    browser.tabs.get(active_info.tabId)
-        .then(tab_data => {
-            updateBrowserActionIcon(tab_data.incognito)
-        })
-})
+    for (const windowInfo of await browser.windows.getAll()) {
+        const iconStatus = windowInfo.incognito ? 'on' : 'off';
+        const iconTitle = windowInfo.incognito ? 'private' : 'not private';
 
-browser.windows.onFocusChanged.addListener(window_id => {
-    if (window_id === browser.windows.WINDOW_ID_NONE) return updateBrowserActionIcon();
+        await browser.browserAction.setIcon({
+            path: `images/${iconTheme}-${iconStatus}.svg`,
+            windowId: windowInfo.id,
+        });
+        await browser.browserAction.setTitle({title: iconTitle, windowId: windowInfo.id});
+    }
+});
 
-    browser.windows.get(window_id, {
-        populate: true
-    }).then(window_info => {
-        const active_tab = window_info.tabs.find(tab => tab.active)
-        console.log('active tab', active_tab)
+browser.windows.onCreated.addListener(async (windowInfo) => {
+    const storage = await browser.storage.sync.get(STORAGE_KEY_ICON_THEME);
+    const iconTheme = storage[STORAGE_KEY_ICON_THEME];
+    const iconStatus = windowInfo.incognito ? 'on' : 'off';
+    const iconTitle = windowInfo.incognito ? 'private' : 'not private';
 
-        updateBrowserActionIcon(active_tab.incognito)
-    })
-})
+    await browser.browserAction.setIcon({
+        path: `images/${iconTheme}-${iconStatus}.svg`,
+        windowId: windowInfo.id,
+    });
+    await browser.browserAction.setTitle({title: iconTitle, windowId: windowInfo.id});
+});
+
+browser.browserAction.onClicked.addListener(() => {
+    browser.runtime.openOptionsPage();
+});
